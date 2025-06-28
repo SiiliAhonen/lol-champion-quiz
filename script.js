@@ -3814,4 +3814,6 @@ if (document.getElementById('top-champion-container')) { // 監視対象を新�
 
     sessionStorage.removeItem('lolChampionScores');
     sessionStorage.removeItem('quizLevel');
-  }
+}
+
+});
