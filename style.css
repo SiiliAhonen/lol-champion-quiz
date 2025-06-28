@@ -1,0 +1,175 @@
+/* --- 全体に適用される基本スタイル --- */
+
+:root {
+    --primary-color: #00A8E8;
+    --primary-color-dark: #007EA7;
+    --heading-color: #005A82;
+    --base-text-color: #333;
+    --light-bg-color: #f4f7f6;
+    --white-color: #ffffff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--light-bg-color);
+    color: var(--base-text-color);
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 20px 40px;
+}
+
+h1 {
+    color: var(--heading-color);
+    font-size: 2rem;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* --- ボタンの共通スタイル --- */
+.start-button, .restart-button, .option {
+    display: block;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    max-width: 600px; /* ▼変更：ボタンの最大幅を450pxから600pxに広げました */
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-button:hover, .restart-button:hover, .option:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- ページごとの個別スタイル --- */
+
+/* トップページ */
+.description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* 診断ページ */
+#progress {
+    font-size: 1rem;
+    font-weight: bold
+    color: var(--primary-color);
+}
+
+#question {
+    font-size: 1.5rem;
+    margin: 20px 0 40px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 結果ページ */
+.result-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.result-item .champion-image {
+    width: 308px;
+    height: 560px;
+    border-radius: 10px;
+    border: 4px solid var(--white-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    
+    /* ▼変更：coverからcontainに変更し、画像全体が表示されるようにします */
+    object-fit: contain; 
+    
+    /* ▼追加：画像の上下左右に余白ができた場合、その背景色を指定します */
+    background-color: #e9ecef; /* 背景を薄いグレーにして余白を目立たなくする */
+}
+
+.result-item .champion-name {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--heading-color);
+}
+
+.result-item .champion-role {
+    margin: 5px 0 15px 0;
+    font-weight: bold;
+    color: #555;
+    background-color: #e7f7fe;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.result-item .champion-strengths {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.result-item .champion-strengths li {
+    padding: 8px 8px 8px 0;
+}
+
+
+/* --- レスポンシブ対応 (画面幅が768px以下のデバイス用) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    #question {
+        font-size: 1.3rem;
+    }
+
+    .result-item .champion-image {
+        width: 140px; /* スマホでは少しだけ画像サイズを調整 */
+        height: 140px;
+    }
+
+    .result-item .champion-name {
+        font-size: 1.5rem;
+    }
+
+    .start-button, .restart-button, .option {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+}

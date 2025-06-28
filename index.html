@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoLチャンピオン診断</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>あなたにピッタリのLoLチャンピオン診断</h1>
+        <p class="description">
+            いくつかの質問に答えるだけで、<br>
+            あなたにおすすめのチャンピオンが見つかります！
+        </p>
+        
+        <a href="quiz.html" class="start-button" onclick="setQuizLevel('beginner')">
+            かんたん診断を始める<br><small>(LoL初心者の方はこちら)</small>
+        </a>
+        <a href="quiz.html" class="start-button" onclick="setQuizLevel('intermediate')">
+            こだわり診断を始める<br><small>(LoL経験者の方はこちら)</small>
+        </a>
+
+    </div>
+
+    <script>
+        function setQuizLevel(level) {
+            sessionStorage.setItem('quizLevel', level);
+        }
+    </script>
+</body>
+</html>
