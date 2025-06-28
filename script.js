@@ -3555,7 +3555,7 @@ const beginnerQuizData = [
             { text: "難しくても構わない。使いこなせたら最高にカッコいいキャラがいい！", scores: { difficulty: ["高"], weight: 2 } }
         ]
     }
-
+  ];
 
 const intermediateQuizData = [
     {
@@ -3631,49 +3631,38 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     if (document.getElementById('quiz-container')) {
 
-        // セッションストレージからクイズレベルを取得（なければ'beginner'）
         const level = sessionStorage.getItem('quizLevel') || 'beginner';
         const quizData = level === 'intermediate' ? intermediateQuizData : beginnerQuizData;
 
         let currentQuestionIndex = 0;
         let userScores = {};
 
-        // HTML要素を取得
         const progressElement = document.getElementById('progress');
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options-container');
 
-        // 現在の質問を表示する関数
         function showQuestion() {
-            // クイズ開始時（またはブラウザバックで戻った時）にスコアをリセット
             if (currentQuestionIndex === 0) {
                 userScores = {};
             }
-
             const questionData = quizData[currentQuestionIndex];
             if (progressElement) progressElement.textContent = `Q${currentQuestionIndex + 1} / ${quizData.length}`;
             questionElement.textContent = questionData.question;
-            optionsContainer.innerHTML = ''; // 前の選択肢をクリア
+            optionsContainer.innerHTML = '';
 
-            // 選択肢ボタンを生成
             questionData.options.forEach(option => {
                 const button = document.createElement('button');
                 button.textContent = option.text;
                 button.className = 'option';
-                button.onclick = () => {
-                    selectOption(option);
-                };
+                button.onclick = () => selectOption(option);
                 optionsContainer.appendChild(button);
             });
         }
 
-        // 選択肢がクリックされた時の処理
         function selectOption(option) {
             const weight = option.scores.weight || 1;
-            // スコアリング対象となるカテゴリのリスト
             const scoreCategories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType'];
 
-            // 各カテゴリについてスコアを加算
             scoreCategories.forEach(category => {
                 if (option.scores[category]) {
                     const values = option.scores[category];
@@ -3685,17 +3674,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             currentQuestionIndex++;
 
-            // 次の質問があるかチェック
             if (currentQuestionIndex < quizData.length) {
                 showQuestion();
             } else {
-                // クイズ終了：スコアを保存して結果ページへ
                 sessionStorage.setItem('lolChampionScores', JSON.stringify(userScores));
                 window.location.href = 'result.html';
             }
         }
 
-        // 最初の質問を表示してクイズを開始
         showQuestion();
     }
 
@@ -3705,95 +3691,127 @@ document.addEventListener('DOMContentLoaded', () => {
      * 結果ページのロジック
      * ==================================
      */
-    if (document.getElementById('result-container')) {
+if (document.getElementById('top-champion-container')) { // 監視対象を新しいIDに変更
 
-        // セッションストレージからスコアを取得
-        const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
+    const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
 
-        // スコアがない場合はトップページにリダイレクト
-        if (!userScores) {
-            window.location.href = 'index.html';
-            return;
-        }
+    if (!userScores) {
+        window.location.href = 'index.html';
+        return;
+    }
 
-        // 全チャンピオンのマッチスコアを計算
-        let championMatchScores = champions.map(champion => {
-            let score = 0;
-            const categories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType'];
+    let championMatchScores = champions.map(champion => {
+        let score = 0;
+        const categories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType'];
 
-            categories.forEach(category => {
-                const championTraits = champion[category];
-                if (championTraits) {
-                    const traitsArray = Array.isArray(championTraits) ? championTraits : [championTraits];
-                    traitsArray.forEach(trait => {
-                        if (userScores[trait]) {
-                            score += userScores[trait];
-                        }
-                    });
-                }
-            });
-
-            return { ...champion, matchScore: score };
-        });
-
-        // マッチスコアで降順にソート
-        championMatchScores.sort((a, b) => b.matchScore - a.matchScore);
-
-        // --- 上位3チャンピオンを選出（多様性を考慮） ---
-        const top3Champions = [];
-        if (championMatchScores.length > 0) {
-            // 1位はスコアが最も高いチャンピオン
-            top3Champions.push(championMatchScores[0]);
-
-            if (championMatchScores.length > 1) {
-                const topChampionClasses = top3Champions[0].class || [];
-                let remainingChampions = championMatchScores.slice(1);
-
-                // 1位とクラスが重複しないチャンピオンにボーナススコアを与える
-                remainingChampions.forEach(champ => {
-                    const isSameClass = (champ.class || []).some(c => topChampionClasses.includes(c));
-                    if (!isSameClass) {
-                        // 固定値ではなく、元のスコアに対する割合ボーナスで自然な順位変動を促す
-                        champ.matchScore *= 1.2; // 20%アップ
+        categories.forEach(category => {
+            const championTraits = champion[category];
+            if (championTraits) {
+                const traitsArray = Array.isArray(championTraits) ? championTraits : [championTraits];
+                traitsArray.forEach(trait => {
+                    if (userScores[trait]) {
+                        score += userScores[trait];
                     }
                 });
-
-                // ボーナス適用後に再度ソート
-                remainingChampions.sort((a, b) => b.matchScore - a.matchScore);
-
-                // 2位と3位を追加
-                if (remainingChampions[0]) top3Champions.push(remainingChampions[0]);
-                if (remainingChampions[1]) top3Champions.push(remainingChampions[1]);
             }
-        }
-
-        // 結果をHTMLに描画
-        const resultContainer = document.getElementById('result-container');
-        resultContainer.innerHTML = '<h1>あなたにおすすめのチャンピオンは…</h1>';
-        
-        top3Champions.forEach((champion, index) => {
-            const resultItem = document.createElement('div');
-            resultItem.className = 'result-item';
-            // 公式IDを使用して、より堅牢なURLを生成
-            const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
-            const strengthsHTML = (champion.strengths || []).map(s => `<li>${s}</li>`).join('');
-            const roleText = `役割：${(champion.role || []).join(' / ')}`;
-
-            resultItem.innerHTML = `
-                <div class="rank-badge">${index + 1}位</div>
-                <img src="${imageUrl}" alt="${champion.championNameJP}" class="champion-image" onerror="this.src='default-image.jpg';">
-                <div class="champion-info">
-                    <h2 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h2>
-                    <p class="champion-role">${roleText}</p>
-                    <p class="champion-summary">こんな人におすすめ：</p>
-                    <ul class="champion-strengths">${strengthsHTML}</ul>
-                </div>
-            `;
-            resultContainer.appendChild(resultItem);
         });
 
-        // 診断後に不要なデータを削除
-        sessionStorage.removeItem('lolChampionScores');
-        sessionStorage.removeItem('quizLevel');
+        // 役割が全く合わないチャンピオンのスコアを下げる調整
+        const userRoles = Object.keys(userScores).filter(key => champions.some(c => (c.role || []).includes(key)));
+        const champRoles = champion.role || [];
+        if (userRoles.length > 0 && !champRoles.some(r => userRoles.includes(r))) {
+            score *= 0.7; // 役割が一致しない場合スコアを30%減
+        }
+
+
+        return { ...champion, matchScore: score };
+    });
+
+    championMatchScores.sort((a, b) => b.matchScore - a.matchScore);
+
+    // --- 上位3チャンピオンを選出（多様性を考慮） ---
+    const top3Champions = [];
+    if (championMatchScores.length > 0) {
+        top3Champions.push(championMatchScores[0]);
+
+        if (championMatchScores.length > 1) {
+            const topChampionClasses = top3Champions[0].class || [];
+            let remainingChampions = championMatchScores.slice(1);
+
+            remainingChampions.forEach(champ => {
+                const isSameClass = (champ.class || []).some(c => topChampionClasses.includes(c));
+                if (isSameClass) {
+                     // クラスが重複する場合、スコアを少し下げる（ペナルティ）
+                    champ.matchScore *= 0.8; 
+                }
+            });
+            
+            remainingChampions.sort((a, b) => b.matchScore - a.matchScore);
+
+            if (remainingChampions[0]) top3Champions.push(remainingChampions[0]);
+            if (remainingChampions[1]) top3Champions.push(remainingChampions[1]);
+        }
     }
-});
+    
+    // --- 結果をHTMLに描画する関数 ---
+    function renderChampion(champion, container, isTop) {
+        const resultItem = document.createElement('div');
+        resultItem.className = 'result-item';
+        const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
+        const strengthsHTML = (champion.strengths || []).slice(0, 3).map(s => `<li>${s}</li>`).join(''); // 上位3つに絞る
+        const roleText = `役割：${(champion.role || []).join(' / ')}`;
+
+        let titleHTML = isTop ? '<h1>あなたにピッタリなのはこのチャンピオン！</h1>' : '';
+        let rankBadge = isTop ? `<div class="rank-badge">1位</div>` : '';
+
+
+        resultItem.innerHTML = `
+            ${titleHTML}
+            ${rankBadge}
+            <img src="${imageUrl}" alt="${champion.championNameJP}" class="champion-image" onerror="this.src='default-image.jpg';">
+            <div class="champion-info">
+                <h2 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h2>
+                <p class="champion-role">${roleText}</p>
+                <p class="champion-summary">このチャンピオンの長所：</p>
+                <ul class="champion-strengths">${strengthsHTML}</ul>
+            </div>
+        `;
+        container.appendChild(resultItem);
+    }
+
+    // --- 描画処理の実行 ---
+    const topContainer = document.getElementById('top-champion-container');
+    const otherContainer = document.getElementById('other-champions-container');
+
+    if (top3Champions.length > 0) {
+        renderChampion(top3Champions[0], topContainer, true);
+    }
+    if (top3Champions.length > 1) {
+         // 2位と3位のタイトルを追加
+        const otherTitle = document.createElement('h3');
+        otherTitle.textContent = 'こんなチャンピオンもおすすめ！';
+        otherContainer.before(otherTitle); // otherContainerの前に追加
+        renderChampion(top3Champions[1], otherContainer, false);
+    }
+    if (top3Champions.length > 2) {
+        renderChampion(top3Champions[2], otherContainer, false);
+    }
+
+    // --- シェアボタンのロジック ---
+    const shareButton = document.getElementById('share-button');
+    if (shareButton && top3Champions.length > 0) {
+        shareButton.onclick = () => {
+            const topChampionName = top3Champions[0].championNameJP;
+            const text = `LoLチャンピオン診断の結果、私にピッタリなのは【${topChampionName}】でした！\nあなたも診断してみよう！\n\n`;
+            const url = window.location.origin; // VercelのURLを取得
+            const hashtags = "LoLチャンピオン診断,LeagueOfLegends";
+            
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
+            
+            window.open(twitterUrl, '_blank');
+        };
+    }
+
+    sessionStorage.removeItem('lolChampionScores');
+    sessionStorage.removeItem('quizLevel');
+  }

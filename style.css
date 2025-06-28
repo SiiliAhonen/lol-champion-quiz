@@ -42,7 +42,7 @@ p {
     padding: 15px;
     margin: 15px auto;
     width: 90%;
-    max-width: 600px; /* ▼変更：ボタンの最大幅を450pxから600pxに広げました */
+    max-width: 600px;
     background-color: var(--primary-color);
     color: var(--white-color);
     text-decoration: none;
@@ -73,7 +73,7 @@ p {
 /* 診断ページ */
 #progress {
     font-size: 1rem;
-    font-weight: bold
+    font-weight: bold;
     color: var(--primary-color);
 }
 
@@ -91,6 +91,19 @@ p {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 25px;
+    position: relative; /* 順位バッジの基準位置 */
+}
+
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .result-item .champion-image {
@@ -100,12 +113,8 @@ p {
     border: 4px solid var(--white-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 15px;
-    
-    /* ▼変更：coverからcontainに変更し、画像全体が表示されるようにします */
     object-fit: contain; 
-    
-    /* ▼追加：画像の上下左右に余白ができた場合、その背景色を指定します */
-    background-color: #e9ecef; /* 背景を薄いグレーにして余白を目立たなくする */
+    background-color: #e9ecef;
 }
 
 .result-item .champion-name {
@@ -113,6 +122,11 @@ p {
     font-size: 1.8rem;
     color: var(--heading-color);
 }
+.result-item .champion-title {
+    font-size: 1.2rem; /* タイトルを少し小さく */
+    color: #666;
+}
+
 
 .result-item .champion-role {
     margin: 5px 0 15px 0;
@@ -134,6 +148,72 @@ p {
 
 .result-item .champion-strengths li {
     padding: 8px 8px 8px 0;
+    border-bottom: 1px dashed #ddd;
+}
+.result-item .champion-strengths li:before {
+    content: '✔';
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+.result-item .champion-strengths li:last-child {
+    border-bottom: none;
+}
+
+
+/* --- 結果ページの改良スタイル --- */
+#top-champion-container .result-item {
+    background: linear-gradient(145deg, #e7f7fe, #f8f8f8);
+    border: 2px solid var(--primary-color);
+    transform: scale(1.02);
+}
+
+.other-champions-title {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 30px;
+}
+
+#other-champions-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#other-champions-container .result-item {
+    width: 48%; 
+    padding: 15px;
+}
+
+#other-champions-container .champion-image {
+    width: 100%; /* 親要素に合わせる */
+    max-width: 250px;
+    height: auto;
+}
+#other-champions-container .champion-name {
+    font-size: 1.3rem;
+}
+
+/* シェアボタン */
+#share-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e7f7fe;
+    border-radius: 8px;
+}
+#share-button {
+    background-color: #1DA1F2; /* Twitterの色 */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#share-button:hover {
+    background-color: #0c85d0;
 }
 
 
@@ -158,10 +238,11 @@ p {
     #question {
         font-size: 1.3rem;
     }
-
+    
     .result-item .champion-image {
-        width: 140px; /* スマホでは少しだけ画像サイズを調整 */
-        height: 140px;
+        width: 100%;
+        max-width: 250px;
+        height: auto; /* 縦横比を維持 */
     }
 
     .result-item .champion-name {
@@ -171,5 +252,13 @@ p {
     .start-button, .restart-button, .option {
         font-size: 1.1rem;
         padding: 12px;
+    }
+    
+    #other-champions-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #other-champions-container .result-item {
+        width: 90%;
     }
 }
