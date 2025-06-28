@@ -3506,7 +3506,7 @@ const champions = [
   }
 ];
 
-cconst beginnerQuizData = [
+const beginnerQuizData = [
     {
         // 質問1: 最も根源的な戦い方の好みを問う（最重要）
         question: "Q1: あなたが一番「これだ！」と思う戦い方は？",
@@ -3555,7 +3555,7 @@ cconst beginnerQuizData = [
             { text: "難しくても構わない。使いこなせたら最高にカッコいいキャラがいい！", scores: { difficulty: ["高"], weight: 2 } }
         ]
     }
-];
+
 
 const intermediateQuizData = [
     {
