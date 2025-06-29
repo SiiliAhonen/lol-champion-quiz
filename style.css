@@ -76,6 +76,23 @@ p {
     font-weight: bold;
     color: var(--primary-color);
 }
+.progress-bar-container {
+    width: 90%;
+    max-width: 600px;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin: 10px auto 30px auto; /* 上下のマージンを調整 */
+    overflow: hidden; /* はみ出した要素を隠す */
+}
+
+#progress-bar {
+    width: 0%; /* 初期状態は0% */
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.4s ease-in-out; /* 幅が変わる時にアニメーション */
+}
 
 #question {
     font-size: 1.5rem;

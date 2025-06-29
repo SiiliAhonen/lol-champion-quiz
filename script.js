@@ -3554,7 +3554,24 @@ const beginnerQuizData = [
             { text: "ちょっと練習するくらいならOK。やりごたえも欲しい。", scores: { difficulty: ["中"], weight: 2 } },
             { text: "難しくても構わない。使いこなせたら最高にカッコいいキャラがいい！", scores: { difficulty: ["高"], weight: 2 } }
         ]
-    }
+    },
+{
+    // 質問6: ダメージの種類についての好み
+    question: "Q6: 敵を倒すなら、どんな方法がいい？",
+    options: [
+        { text: "物理的な武器（剣や銃）でガツンとダメージ！", scores: { damageType: ["物理 (AD)"], weight: 2 } },
+        { text: "派手な魔法で、不思議な力を使ってダメージ！", scores: { damageType: ["魔法 (AP)"], weight: 2 } }
+    ]
+},
+{
+    // 質問7: 集団での立ち位置
+    question: "Q7: 複数人で行動する時、あなたはどのタイプ？",
+    options: [
+        { text: "先陣を切って突っ込む！失敗しても気にしない！", scores: { tags: ["エンゲージ", "ダイバー"], weight: 2 } },
+        { text: "周りの様子をよく見て、一番良いタイミングを待つ。", scores: { tags: ["ピックアップ", "ゾーンコントロール"], weight: 2 } },
+        { text: "後ろからみんなを支える。安全第一！", scores: { tags: ["ピール性能", "エンチャンター"], weight: 2 } }
+    ]
+}
   ];
 
 const intermediateQuizData = [
@@ -3619,7 +3636,24 @@ const intermediateQuizData = [
             { text: "ハイリスク・ハイリターン！派手なプレイで試合をキャリーしたい。", scores: { class: ["アサシン", "スカーミッシャー"], tags: ["スノーボール", "ダイバー"], weight: 2 } },
             { text: "ローリスク・安定重視。堅実に立ち回り、チームの勝利に貢献したい。", scores: { class: ["ワーデン", "エンチャンター", "コントロールメイジ"], tags: ["ピール性能", "ゾーンコントロール"], weight: 2 } }
         ]
-    }
+    },
+{
+    // 質問8: ダメージの出し方（DPS vs バースト）
+    question: "Q8: ダメージの出し方として、どちらが好み？",
+    options: [
+        { text: "一瞬で敵を溶かす「バーストダメージ」の快感。", scores: { tags: ["バーストダメージ"], class: ["バースト", "アサシン"], weight: 3 } },
+        { text: "継続的にダメージを出し続ける「DPS」で敵を圧倒する安定感。", scores: { tags: ["継戦能力", "通常攻撃主体"], class: ["マークスマン", "スカーミッシャー"], weight: 3 } }
+    ]
+},
+{
+    // 質問9: 特殊な貢献方法
+    question: "Q9: チームへの貢献として、最も魅力的なのは？",
+    options: [
+        { text: "敵の意表を突く「変身」や「憑依」で戦況をかき乱す。", scores: { tags: ["変身", "ULT模倣"], weight: 2 } },
+        { text: "味方を「復活」させたり「無敵」にしたりする、究極の守護。", scores: { tags: ["復活", "ピール性能"], strengths: ["味方を無敵にするULT"], weight: 2 } },
+        { text: "マップをコントロールする「罠」や「オブジェクトコントロール」の戦略性。", scores: { tags: ["ゾーンコントロール", "オブジェクトコントロール"], weight: 2 } }
+    ]
+}
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3640,6 +3674,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const progressElement = document.getElementById('progress');
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options-container');
+        const progressBarElement = document.getElementById('progress-bar'); 
 
         function showQuestion() {
             if (currentQuestionIndex === 0) {
