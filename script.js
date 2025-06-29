@@ -3508,7 +3508,6 @@ const champions = [
 
 const beginnerQuizData = [
     {
-        // 質問1: 最も根源的な戦い方の好みを問う（最重要）
         question: "Q1: あなたが一番「これだ！」と思う戦い方は？",
         options: [
             { text: "近距離で激しく殴り合う、パワフルな戦い！", scores: { class: ["ファイター", "ジャガーノート", "スカーミッシャー"], attackType: ["メレー"], weight: 3 } },
@@ -3519,7 +3518,6 @@ const beginnerQuizData = [
         ]
     },
     {
-        // 質問2: キャラクターのビジュアルテーマを問う
         question: "Q2: どんな見た目のキャラクターに心惹かれる？",
         options: [
             { text: "美しい、かわいい、あるいはカッコいい人間タイプのキャラクター", scores: { designTheme: ["優雅", "イケメン", "かわいい", "スタイリッシュ", "ヒーロー", "騎士"], weight: 1 } },
@@ -3528,7 +3526,6 @@ const beginnerQuizData = [
         ]
     },
     {
-        // 質問3: リスクとリターンの好みを問う
         question: "Q3: ゲームで味わいたい最高の瞬間は？",
         options: [
             { text: "派手な必殺技で、相手の体力を一気に消し飛ばした時！", scores: { tags: ["バーストダメージ"], class: ["バースト"], weight: 2 } },
@@ -3538,7 +3535,6 @@ const beginnerQuizData = [
         ]
     },
     {
-        // 質問4: 役割意識をシンプルに問う
         question: "Q4: チームの中では、どんな役割が好き？",
         options: [
             { text: "先頭に立って、チームを引っ張るリーダー！", scores: { class: ["ヴァンガード"], tags: ["エンゲージ"], weight: 2 } },
@@ -3547,7 +3543,6 @@ const beginnerQuizData = [
         ]
     },
     {
-        // 質問5: 操作への許容度を問う
         question: "Q5: 操作は、どのくらいシンプルなのがいい？",
         options: [
             { text: "とにかく簡単！すぐに試合で活躍したい！", scores: { difficulty: ["低"], weight: 2 } },
@@ -3555,28 +3550,25 @@ const beginnerQuizData = [
             { text: "難しくても構わない。使いこなせたら最高にカッコいいキャラがいい！", scores: { difficulty: ["高"], weight: 2 } }
         ]
     },
-{
-    // 質問6: ダメージの種類についての好み
-    question: "Q6: 敵を倒すなら、どんな方法がいい？",
-    options: [
-        { text: "物理的な武器（剣や銃）でガツンとダメージ！", scores: { damageType: ["物理 (AD)"], weight: 2 } },
-        { text: "派手な魔法で、不思議な力を使ってダメージ！", scores: { damageType: ["魔法 (AP)"], weight: 2 } }
-    ]
-},
-{
-    // 質問7: 集団での立ち位置
-    question: "Q7: 複数人で行動する時、あなたはどのタイプ？",
-    options: [
-        { text: "先陣を切って突っ込む！失敗しても気にしない！", scores: { tags: ["エンゲージ", "ダイバー"], weight: 2 } },
-        { text: "周りの様子をよく見て、一番良いタイミングを待つ。", scores: { tags: ["ピックアップ", "ゾーンコントロール"], weight: 2 } },
-        { text: "後ろからみんなを支える。安全第一！", scores: { tags: ["ピール性能", "エンチャンター"], weight: 2 } }
-    ]
-}
-  ];
-
+    {
+        question: "Q6: 敵を倒すなら、どんな方法がいい？",
+        options: [
+            { text: "物理的な武器（剣や銃）でガツンとダメージ！", scores: { damageType: ["物理 (AD)"], weight: 2 } },
+            { text: "派手な魔法で、不思議な力を使ってダメージ！", scores: { damageType: ["魔法 (AP)"], weight: 2 } }
+        ]
+    },
+    {
+        question: "Q7: 複数人で行動する時、あなたはどのタイプ？",
+        options: [
+            { text: "先陣を切って突っ込む！失敗しても気にしない！", scores: { tags: ["エンゲージ", "ダイバー"], weight: 2 } },
+            { text: "周りの様子をよく見て、一番良いタイミングを待つ。", scores: { tags: ["ピックアップ", "ゾーンコントロール"], weight: 2 } },
+            { text: "後ろからみんなを支える。安全第一！", scores: { tags: ["ピール性能", "エンチャンター"], weight: 2 } }
+        ]
+    }
+];
+  
 const intermediateQuizData = [
     {
-        // 質問1: ゲームの時間軸での活躍イメージ
         question: "Q1: あなたが最も輝きたいゲームの時間帯は？",
         options: [
             { text: "序盤からアグレッシブに仕掛け、スノーボールで試合を破壊したい。", scores: { tags: ["序盤の強さ", "スノーボール"], weight: 3 } },
@@ -3585,7 +3577,6 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問2: 集団戦での役割
         question: "Q2: 5v5の集団戦、あなたの使命は？",
         options: [
             { text: "敵の後衛（ADC/メイジ）に突撃し、キャリーを機能不全にさせる。", scores: { class: ["ダイバー", "アサシン"], tags: ["ダイバー"], weight: 3 } },
@@ -3594,7 +3585,6 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問3: マクロ戦略の好み
         question: "Q3: あなたが描く、理想の勝利への道筋は？",
         options: [
             { text: "サイドレーンを一人で押し続け、敵を揺さぶる「スプリットプッシュ」。", scores: { tags: ["スプリットプッシュ性能", "スカーミッシャー"], weight: 2 } },
@@ -3603,7 +3593,6 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問4: スキルの性質
         question: "Q4: あなたが使っていて「楽しい」と感じるスキルの種類は？",
         options: [
             { text: "狙って当てる！スキルショットが主体のテクニカルなスキルセット。", scores: { tags: ["スキルショット主体"], weight: 1 } },
@@ -3612,7 +3601,6 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問5: カウンタープレイへの意識
         question: "Q5: ゲーム中、特に「許せない」敵のタイプは？",
         options: [
             { text: "カチカチのタンク。確定ダメージや割合ダメージで溶かしてやりたい。", scores: { tags: ["アンチタンク", "確定ダメージ"], weight: 2 } },
@@ -3621,7 +3609,6 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問6: 特殊なメカニクスへの興味
         question: "Q6: あなたの心をくすぐる、特殊なチャンピオンのメカニクスは？",
         options: [
             { text: "スタックを溜めて無限に強くなる、終わらない成長。", scores: { tags: ["無限にスケールする", "進化"], weight: 1 } },
@@ -3630,34 +3617,46 @@ const intermediateQuizData = [
         ]
     },
     {
-        // 質問7: プレイスタイルのリスク許容度
         question: "Q7: あなたのプレイスタイルは？",
         options: [
             { text: "ハイリスク・ハイリターン！派手なプレイで試合をキャリーしたい。", scores: { class: ["アサシン", "スカーミッシャー"], tags: ["スノーボール", "ダイバー"], weight: 2 } },
             { text: "ローリスク・安定重視。堅実に立ち回り、チームの勝利に貢献したい。", scores: { class: ["ワーデン", "エンチャンター", "コントロールメイジ"], tags: ["ピール性能", "ゾーンコントロール"], weight: 2 } }
         ]
     },
-{
-    // 質問8: ダメージの出し方（DPS vs バースト）
-    question: "Q8: ダメージの出し方として、どちらが好み？",
-    options: [
-        { text: "一瞬で敵を溶かす「バーストダメージ」の快感。", scores: { tags: ["バーストダメージ"], class: ["バースト", "アサシン"], weight: 3 } },
-        { text: "継続的にダメージを出し続ける「DPS」で敵を圧倒する安定感。", scores: { tags: ["継戦能力", "通常攻撃主体"], class: ["マークスマン", "スカーミッシャー"], weight: 3 } }
-    ]
-},
-{
-    // 質問9: 特殊な貢献方法
-    question: "Q9: チームへの貢献として、最も魅力的なのは？",
-    options: [
-        { text: "敵の意表を突く「変身」や「憑依」で戦況をかき乱す。", scores: { tags: ["変身", "ULT模倣"], weight: 2 } },
-        { text: "味方を「復活」させたり「無敵」にしたりする、究極の守護。", scores: { tags: ["復活", "ピール性能"], strengths: ["味方を無敵にするULT"], weight: 2 } },
-        { text: "マップをコントロールする「罠」や「オブジェクトコントロール」の戦略性。", scores: { tags: ["ゾーンコントロール", "オブジェクトコントロール"], weight: 2 } }
-    ]
-}
+    {
+        question: "Q8: ダメージの出し方として、どちらが好み？",
+        options: [
+            { text: "一瞬で敵を溶かす「バーストダメージ」の快感。", scores: { tags: ["バーストダメージ"], class: ["バースト", "アサシン"], weight: 3 } },
+            { text: "継続的にダメージを出し続ける「DPS」で敵を圧倒する安定感。", scores: { tags: ["継戦能力", "通常攻撃主体"], class: ["マークスマン", "スカーミッシャー"], weight: 3 } }
+        ]
+    },
+    {
+        question: "Q9: チームへの貢献として、最も魅力的なのは？",
+        options: [
+            { text: "敵の意表を突く「変身」や「憑依」で戦況をかき乱す。", scores: { tags: ["変身", "ULT模倣"], weight: 2 } },
+            { text: "味方を「復活」させたり「無敵」にしたりする、究極の守護。", scores: { tags: ["復活", "ピール性能"], strengths: ["味方を無敵にするULT"], weight: 2 } },
+            { text: "マップをコントロールする「罠」や「オブジェクトコントロール」の戦略性。", scores: { tags: ["ゾーンコントロール", "オブジェクトコントロール"], weight: 2 } }
+        ]
+    }
 ];
+
+// ワンポイントアドバイスのデータ（本来はchampions配列に含めるのが望ましい）
+const onePointAdvices = {
+    "Garen": "Eでクルクル回りながら敵にダメージを与え、体力が減った敵はRでフィニッシュ！とにかくシンプルで強力です。",
+    "Annie": "スキルを4回使うと次の攻撃スキルが敵を気絶させます。Rのクマ召喚と合わせて奇襲しましょう！",
+    "Ashe": "通常攻撃で敵をスロウにできるのが強み。Rの矢を遠くの敵に当てて戦闘を開始するのが強力です。",
+    "MasterYi": "Qで敵の攻撃を避けながらダメージを出すのが基本。育つと誰も止められない最強の剣士になります。",
+    "Lux": "長い射程からQで敵を捕まえ、EとRで大ダメージ！安全な位置から攻撃するのが得意です。",
+    "Alistar": "Wで突撃してQで打ち上げるコンボが鉄板。味方を守る頑丈な盾になりましょう。",
+    "Malphite": "Rの突進は集団戦をひっくり返す力があります。敵が固まっているところに突撃しましょう！",
+    // 必要に応じて他のチャンピオンのアドバイスも追加
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ==================================
+    // クイズページのロジック
+    // ==================================
     if (document.getElementById('quiz-container')) {
 
         const level = sessionStorage.getItem('quizLevel') || 'beginner';
@@ -3665,40 +3664,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentQuestionIndex = 0;
         let userScores = {};
+        const answeredQuestions = []; // 回答した質問と選択肢を保存
 
         const progressElement = document.getElementById('progress');
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options-container');
         const progressBarElement = document.getElementById('progress-bar'); 
-function showQuestion() {
-            if (currentQuestionIndex === 0) {
-                userScores = {};
-            }
-            const questionData = quizData[currentQuestionIndex];
-            
-            // ▼▼▼ ここから追加 ▼▼▼
-            // 現在の進捗率を計算 (例: 1問目なら (1 / 7) * 100 = 14.2%)
-            const progressPercentage = ((currentQuestionIndex + 1) / quizData.length) * 100;
-            // プログレスバーのスタイル（幅）を更新
+
+        function showQuestion() {
+            // プログレスバー更新
+            const progressPercentage = (currentQuestionIndex / quizData.length) * 100;
             if (progressBarElement) progressBarElement.style.width = `${progressPercentage}%`;
-            // ▲▲▲ ここまで追加 ▲▲▲
             
+            const questionData = quizData[currentQuestionIndex];
             if (progressElement) progressElement.textContent = `Q${currentQuestionIndex + 1} / ${quizData.length}`;
             questionElement.textContent = questionData.question;
             optionsContainer.innerHTML = '';
 
             questionData.options.forEach(option => {
                 const button = document.createElement('button');
-                button.textContent = option.text;
+                button.innerHTML = option.text; // smallタグなども反映させるためinnerHTMLに変更
                 button.className = 'option';
-                button.onclick = () => selectOption(option);
+                button.onclick = () => selectOption(option, questionData.question);
                 optionsContainer.appendChild(button);
             });
         }
 
-        function selectOption(option) {
+        function selectOption(option, questionText) {
+            // 回答を記録
+            answeredQuestions.push({ question: questionText, answer: option.text, scores: option.scores });
+
             const weight = option.scores.weight || 1;
-            const scoreCategories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType'];
+            const scoreCategories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType', 'damageType'];
 
             scoreCategories.forEach(category => {
                 if (option.scores[category]) {
@@ -3714,7 +3711,10 @@ function showQuestion() {
             if (currentQuestionIndex < quizData.length) {
                 showQuestion();
             } else {
+                // 最終問題が終わったらバーを100%に
+                if (progressBarElement) progressBarElement.style.width = `100%`;
                 sessionStorage.setItem('lolChampionScores', JSON.stringify(userScores));
+                sessionStorage.setItem('lolAnsweredQuestions', JSON.stringify(answeredQuestions));
                 window.location.href = 'result.html';
             }
         }
@@ -3723,131 +3723,173 @@ function showQuestion() {
     }
 
 
-if (document.getElementById('top-champion-container')) { 
+    // ==================================
+    // 結果ページのロジック
+    // ==================================
+    if (document.getElementById('top-champion-container')) {
 
-    const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
+        const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
+        const answeredQuestions = JSON.parse(sessionStorage.getItem('lolAnsweredQuestions'));
 
-    if (!userScores) {
-        window.location.href = 'index.html';
-        return;
-    }
-
-    let championMatchScores = champions.map(champion => {
-        let score = 0;
-        const categories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType'];
-
-        categories.forEach(category => {
-            const championTraits = champion[category];
-            if (championTraits) {
-                const traitsArray = Array.isArray(championTraits) ? championTraits : [championTraits];
-                traitsArray.forEach(trait => {
-                    if (userScores[trait]) {
-                        score += userScores[trait];
-                    }
-                });
-            }
-        });
-
-        // 役割が全く合わないチャンピオンのスコアを下げる調整
-        const userRoles = Object.keys(userScores).filter(key => champions.some(c => (c.role || []).includes(key)));
-        const champRoles = champion.role || [];
-        if (userRoles.length > 0 && !champRoles.some(r => userRoles.includes(r))) {
-            score *= 0.7; // 役割が一致しない場合スコアを30%減
+        if (!userScores || !champions) {
+            // データがない場合はトップページに戻す
+            window.location.href = 'index.html';
+            return;
         }
 
+        let championMatchScores = champions.map(champion => {
+            let score = 0;
+            const categories = ['class', 'tags', 'designTheme', 'difficulty', 'strengths', 'attackType', 'damageType'];
 
-        return { ...champion, matchScore: score };
-    });
-
-    championMatchScores.sort((a, b) => b.matchScore - a.matchScore);
-
-    // --- 上位3チャンピオンを選出（多様性を考慮） ---
-    const top3Champions = [];
-    if (championMatchScores.length > 0) {
-        top3Champions.push(championMatchScores[0]);
-
-        if (championMatchScores.length > 1) {
-            const topChampionClasses = top3Champions[0].class || [];
-            let remainingChampions = championMatchScores.slice(1);
-
-            remainingChampions.forEach(champ => {
-                const isSameClass = (champ.class || []).some(c => topChampionClasses.includes(c));
-                if (isSameClass) {
-                     // クラスが重複する場合、スコアを少し下げる（ペナルティ）
-                    champ.matchScore *= 0.8; 
+            categories.forEach(category => {
+                const championTraits = champion[category];
+                if (championTraits) {
+                    const traitsArray = Array.isArray(championTraits) ? championTraits : [championTraits];
+                    traitsArray.forEach(trait => {
+                        if (userScores[trait]) {
+                            score += userScores[trait];
+                        }
+                    });
                 }
             });
-            
-            remainingChampions.sort((a, b) => b.matchScore - a.matchScore);
 
-            if (remainingChampions[0]) top3Champions.push(remainingChampions[0]);
-            if (remainingChampions[1]) top3Champions.push(remainingChampions[1]);
+            // 役割の一致度でスコアを調整
+            const userRoles = Object.keys(userScores).filter(key => ["トップ", "ジャングル", "ミッド", "ADC", "サポート"].includes(key));
+            const champRoles = champion.role || [];
+            if (userRoles.length > 0 && !champRoles.some(r => userRoles.includes(r))) {
+                score *= 0.7; 
+            }
+
+            return { ...champion, matchScore: score };
+        });
+
+        championMatchScores.sort((a, b) => b.matchScore - a.matchScore);
+
+        // --- 上位3チャンピオンを選出（多様性を考慮） ---
+        const top3Champions = [];
+        const usedChampionIds = new Set();
+
+        if (championMatchScores.length > 0) {
+            top3Champions.push(championMatchScores[0]);
+            usedChampionIds.add(championMatchScores[0].id);
+
+            // 2位以降は、1位とクラスがなるべく被らないように選出
+            let tempScores = championMatchScores.slice(1).map(champ => {
+                const topChampionClasses = top3Champions[0].class || [];
+                const isSameClass = (champ.class || []).some(c => topChampionClasses.includes(c));
+                if (isSameClass) {
+                    champ.matchScore *= 0.8; // 重複ペナルティ
+                }
+                return champ;
+            });
+            
+            tempScores.sort((a, b) => b.matchScore - a.matchScore);
+
+            for (const champ of tempScores) {
+                if (top3Champions.length >= 3) break;
+                if (!usedChampionIds.has(champ.id)) {
+                    top3Champions.push(champ);
+                    usedChampionIds.add(champ.id);
+                }
+            }
         }
-    }
-    
-    // --- 結果をHTMLに描画する関数 ---
-    function renderChampion(champion, container, isTop) {
-        const resultItem = document.createElement('div');
-        resultItem.className = 'result-item';
-        const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
-        // ▼▼▼ SEO修正: alt属性をより具体的に ▼▼▼
-        const imageAltText = `LoLチャンピオン診断結果 - ${champion.championNameJP} (${champion.title})`;
-        const strengthsHTML = (champion.strengths || []).slice(0, 3).map(s => `<li>${s}</li>`).join(''); // 上位3つに絞る
-        const roleText = `役割：${(champion.role || []).join(' / ')}`;
+        
+        // --- 結果をHTMLに描画する関数 ---
+        function renderChampion(champion, container, rank) {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
 
-        let titleHTML = isTop ? '<h2>あなたにピッタリなのはこのチャンピオン！</h2>' : '';
-        let rankBadge = isTop ? `<div class="rank-badge">1位</div>` : '';
-
-
-        resultItem.innerHTML = `
-            ${titleHTML}
-            ${rankBadge}
-            <img src="${imageUrl}" alt="${imageAltText}" class="champion-image" onerror="this.src='default-image.jpg';">
-            <div class="champion-info">
-                <h3 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h3>
-                <p class="champion-role">${roleText}</p>
-                <p class="champion-summary">このチャンピオンの長所：</p>
-                <ul class="champion-strengths">${strengthsHTML}</ul>
-            </div>
-        `;
-        container.appendChild(resultItem);
-    }
-
- const topContainer = document.getElementById('top-champion-container');
-    const otherContainer = document.getElementById('other-champions-container');
-
-    if (top3Champions.length > 0) {
-        // result.htmlのh1がメインタイトルなので、JSで生成する1位のタイトルはh2に変更
-        renderChampion(top3Champions[0], topContainer, true);
-    }
-    if (top3Champions.length > 1) {
-        const otherTitle = document.createElement('h2'); // h3からh2に変更
-        otherTitle.className = 'other-champions-title'; // CSSでスタイルを当てるためのクラス
-        otherTitle.textContent = 'こんなチャンピオンもおすすめ！';
-        otherContainer.before(otherTitle); // otherContainerの前に追加
-
-        renderChampion(top3Champions[1], otherContainer, false);
-    }
-    if (top3Champions.length > 2) {
-        renderChampion(top3Champions[2], otherContainer, false);
-    }
-
-    const shareButton = document.getElementById('share-button');
-    if (shareButton && top3Champions.length > 0) {
-        shareButton.onclick = () => {
-            const topChampionName = top3Champions[0].championNameJP;
-            const text = `LoLチャンピオン診断の結果、私にピッタリなのは【${topChampionName}】でした！\n`;
-            const url = window.location.origin;
-            const hashtags = "LoLチャンピオン診断,LeagueofLegends,LoL";
+            // --- 相性ポイント生成ロジック ---
+            let affinityHTML = '';
+            if (rank === 1 && answeredQuestions) {
+                const topAffinities = [];
+                // 回答履歴からスコアの高かった特性を抽出
+                const sortedUserTraits = Object.entries(userScores).sort((a, b) => b[1] - a[1]);
+                
+                for (const [trait, score] of sortedUserTraits) {
+                    const champTraits = [...(champion.class || []), ...(champion.tags || [])];
+                    if (champTraits.includes(trait)) {
+                        // この特性に繋がったユーザーの回答を探す
+                        const sourceAnswer = answeredQuestions.find(a => a.scores.class?.includes(trait) || a.scores.tags?.includes(trait));
+                        if(sourceAnswer) {
+                            topAffinities.push(`あなたが選んだ**「${sourceAnswer.answer.replace(/<br><small>.*<\/small>/, '')}」**という点は、このチャンピオンの**「${trait}」**という特性にマッチしています！`);
+                        }
+                    }
+                    if(topAffinities.length >= 2) break; // 2つまで表示
+                }
+                
+                if (topAffinities.length > 0) {
+                    affinityHTML = `<div class="affinity-points"><h4>あなたとの相性ポイント</h4><ul>${topAffinities.map(t => `<li>${t}</li>`).join('')}</ul></div>`;
+                }
+            }
             
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
+            // --- その他の情報 ---
+            const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
+            const imageAltText = `LoLチャンピオン診断結果 ${rank}位 - ${champion.championNameJP}`;
+            const roleText = `主な役割：${(champion.role || []).join(' / ')}`;
+            const advice = onePointAdvices[champion.id] || champion.uniqueMechanics || "このチャンピオンはユニークな戦い方ができます。";
+            const youtubeLink = `https://www.youtube.com/results?search_query=${encodeURIComponent(champion.championNameEN + ' 使い方 ガイド')}`;
+
+            let rankBadge = '';
+            if (rank === 1) rankBadge = `<div class="rank-badge">あなたにピッタリ！</div>`;
+            else if (rank === 2) rankBadge = `<div class="rank-badge">2位</div>`;
+            else if (rank === 3) rankBadge = `<div class="rank-badge">3位</div>`;
+
+
+            resultItem.innerHTML = `
+                ${rankBadge}
+                <img src="${imageUrl}" alt="${imageAltText}" class="champion-image" loading="lazy">
+                <div class="champion-info">
+                    <h3 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h3>
+                    <p class="champion-role">${roleText}</p>
+                    ${affinityHTML}
+                    <div class="one-point-advice">
+                        <h4>初心者向けワンポイントアドバイス</h4>
+                        <p>${advice}</p>
+                    </div>
+                    <a href="${youtubeLink}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                        使い方を動画で見てみる
+                    </a>
+                </div>
+            `;
+            container.appendChild(resultItem);
+        }
+
+        // --- 描画処理の実行 ---
+        const topContainer = document.getElementById('top-champion-container');
+        const otherContainer = document.getElementById('other-champions-container');
+
+        if (top3Champions[0]) {
+            renderChampion(top3Champions[0], topContainer, 1);
+        }
+        
+        if (top3Champions.length > 1) {
+            const otherTitle = document.createElement('h2');
+            otherTitle.className = 'other-champions-title';
+            otherTitle.textContent = 'こんなチャンピオンもおすすめ！';
+            otherContainer.before(otherTitle);
             
-            window.open(twitterUrl, '_blank');
-        };
+            if (top3Champions[1]) renderChampion(top3Champions[1], otherContainer, 2);
+            if (top3Champions[2]) renderChampion(top3Champions[2], otherContainer, 3);
+        }
+
+        // --- シェアボタンのロジック ---
+        const shareButton = document.getElementById('share-button');
+        if (shareButton && top3Champions[0]) {
+            shareButton.onclick = () => {
+                const topChampionName = top3Champions[0].championNameJP;
+                const text = `LoLチャンピオン診断の結果、私にピッタリなのは【${topChampionName}】でした！\nあなたも診断してみよう！\n\n#LoLチャンピオン診断 #リーグオブレジェンド #LoL\n`;
+                const url = window.location.origin + window.location.pathname.replace('result.html', '');
+                
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                
+                window.open(twitterUrl, '_blank');
+            };
+        }
+
+        // セッションストレージのデータを削除
+        sessionStorage.removeItem('lolChampionScores');
+        sessionStorage.removeItem('lolAnsweredQuestions');
+        sessionStorage.removeItem('quizLevel');
     }
-
-    sessionStorage.removeItem('lolChampionScores');
-    sessionStorage.removeItem('quizLevel');
-}
-
 });

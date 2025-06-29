@@ -7,9 +7,39 @@
     <meta name="description" content="簡単な質問に答えるだけで、あなたの性格やプレイスタイルに合ったLoL(リーグ・オブ・レジェンド)のチャンピオンが見つかる無料診断サイト。初心者向け・経験者向け診断を用意しています。">
     <link rel="stylesheet" href="style.css">
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5664127301337206"
+    <!-- AdSense 審査用コード -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
          crossorigin="anonymous"></script>
-
+         
+    <!-- FAQ構造化データ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "このLoLチャンピオン診断は無料ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、全ての診断を完全無料でご利用いただけます。登録も不要です。"
+        }
+      }, {
+        "@type": "Question",
+        "name": "LoLをプレイしたことがない初心者でも楽しめますか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "はい、楽しめます！「かんたん診断」は専門用語を避け、あなたの性格や好みに合わせて直感的に答えられるように作られています。ぜひ最初の相棒を見つけるためにお試しください。"
+        }
+      }, {
+        "@type": "Question",
+        "name": "診断結果はどれくらい正確ですか？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "この診断は、160体以上のチャンピオンの特性（役割、スキル、難易度など）をデータ化し、あなたの回答と照らし合わせて最適なチャンピオンを提案します。多くのプレイヤーに楽しんでいただけるよう設計されていますが、あくまでエンターテイメントとしてお楽しみください。"
+        }
+      }]
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -25,6 +55,22 @@
         <a href="quiz.html" class="start-button" onclick="setQuizLevel('intermediate')">
             こだわり診断を始める<br><small>(LoL経験者の方はこちら)</small>
         </a>
+
+        <div class="faq-section">
+            <h2>よくある質問 (FAQ)</h2>
+            <div class="faq-item">
+                <h3>このLoLチャンピオン診断は無料ですか？</h3>
+                <p>はい、全ての診断を完全無料でご利用いただけます。登録も不要です。</p>
+            </div>
+            <div class="faq-item">
+                <h3>LoLをプレイしたことがない初心者でも楽しめますか？</h3>
+                <p>はい、楽しめます！「かんたん診断」は専門用語を避け、あなたの性格や好みに合わせて直感的に答えられるように作られています。ぜひ最初の相棒を見つけるためにお試しください。</p>
+            </div>
+            <div class="faq-item">
+                <h3>診断結果はどれくらい正確ですか？</h3>
+                <p>この診断は、170体以上のチャンピオンの特性（役割、スキル、難易度など）をデータ化し、あなたの回答と照らし合わせて最適なチャンピオンを提案します。多くのプレイヤーに楽しんでいただけるよう設計されていますが、あくまでエンターテイメントとしてお楽しみください。</p>
+            </div>
+        </div>
 
     </div>
 

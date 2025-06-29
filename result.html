@@ -3,40 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoLチャンピオン診断 - 診断結果</title>
+    <title>【診断結果】あなたにおすすめのLoLチャンピオンはこれ！</title>
+    <meta name="description" content="LoLチャンピオン診断の結果ページです。あなたの性格やプレイスタイルから導き出された、おすすめのチャンピオン3体をご紹介。今すぐあなたの相棒を見つけよう！">
     <link rel="stylesheet" href="style.css">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5664127301337206"
+
+    <!-- AdSense 審査用コード -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
          crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
-        <!-- headerを削除し、ここにタイトルを配置 -->
-        <h1 id="result-main-title">あなたの相棒はこのチャンピオン！</h1>
+        <h1 id="result-main-title">診断結果</h1>
 
         <main>
             <div id="top-champion-container">
+                <!-- 1位のチャンピオンはここにJavaScriptで挿入されます -->
             </div>
-
-            <div class="ad-container" style="margin: 40px auto; max-width: 728px;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5664127301337206"
-             crossorigin="anonymous"></script>
- <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5664127301337206"
-             data-ad-slot="8885222379"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
+            
+            <!-- AdSense広告ユニット -->
+            <div class="ad-container" style="margin: 40px auto; max-width: 728px; min-height: 90px; text-align: center;">
+                <p style="font-size: 0.8em; color: #888;">- Advertisement -</p>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5664127301337206"
+                     crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5664127301337206"
+                     data-ad-slot="8885222379"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
             <div id="other-champions-container">
+                <!-- 2位、3位のチャンピオンはここに挿入されます -->
             </div>
         </main>
 
         <div id="share-container">
-            <p>診断結果をシェアしよう！</p>
-            <button id="share-button">結果をポストする</button>
+            <p>この診断結果をシェアしよう！</p>
+            <button id="share-button">結果をツイートする</button>
         </div>
         <div class="restart-button-container">
             <a href="index.html" class="restart-button">もう一度診断する</a>
