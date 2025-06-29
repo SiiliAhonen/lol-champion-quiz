@@ -3658,11 +3658,6 @@ const intermediateQuizData = [
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /**
-     * ==================================
-     * クイズページのロジック
-     * ==================================
-     */
     if (document.getElementById('quiz-container')) {
 
         const level = sessionStorage.getItem('quizLevel') || 'beginner';
@@ -3675,12 +3670,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options-container');
         const progressBarElement = document.getElementById('progress-bar'); 
-
-        function showQuestion() {
+function showQuestion() {
             if (currentQuestionIndex === 0) {
                 userScores = {};
             }
             const questionData = quizData[currentQuestionIndex];
+            
+            // ▼▼▼ ここから追加 ▼▼▼
+            // 現在の進捗率を計算 (例: 1問目なら (1 / 7) * 100 = 14.2%)
+            const progressPercentage = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            // プログレスバーのスタイル（幅）を更新
+            if (progressBarElement) progressBarElement.style.width = `${progressPercentage}%`;
+            // ▲▲▲ ここまで追加 ▲▲▲
+            
             if (progressElement) progressElement.textContent = `Q${currentQuestionIndex + 1} / ${quizData.length}`;
             questionElement.textContent = questionData.question;
             optionsContainer.innerHTML = '';
@@ -3721,12 +3723,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /**
-     * ==================================
-     * 結果ページのロジック
-     * ==================================
-     */
-if (document.getElementById('top-champion-container')) { // 監視対象を新しいIDに変更
+if (document.getElementById('top-champion-container')) { 
 
     const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
 
