@@ -3790,19 +3790,21 @@ if (document.getElementById('top-champion-container')) {
         const resultItem = document.createElement('div');
         resultItem.className = 'result-item';
         const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
+        // ▼▼▼ SEO修正: alt属性をより具体的に ▼▼▼
+        const imageAltText = `LoLチャンピオン診断結果 - ${champion.championNameJP} (${champion.title})`;
         const strengthsHTML = (champion.strengths || []).slice(0, 3).map(s => `<li>${s}</li>`).join(''); // 上位3つに絞る
         const roleText = `役割：${(champion.role || []).join(' / ')}`;
 
-        let titleHTML = isTop ? '<h1>あなたにピッタリなのはこのチャンピオン！</h1>' : '';
+        let titleHTML = isTop ? '<h2>あなたにピッタリなのはこのチャンピオン！</h2>' : '';
         let rankBadge = isTop ? `<div class="rank-badge">1位</div>` : '';
 
 
         resultItem.innerHTML = `
             ${titleHTML}
             ${rankBadge}
-            <img src="${imageUrl}" alt="${champion.championNameJP}" class="champion-image" onerror="this.src='default-image.jpg';">
+            <img src="${imageUrl}" alt="${imageAltText}" class="champion-image" onerror="this.src='default-image.jpg';">
             <div class="champion-info">
-                <h2 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h2>
+                <h3 class="champion-name">${champion.championNameJP} <span class="champion-title">(${champion.title})</span></h3>
                 <p class="champion-role">${roleText}</p>
                 <p class="champion-summary">このチャンピオンの長所：</p>
                 <ul class="champion-strengths">${strengthsHTML}</ul>
@@ -3811,32 +3813,32 @@ if (document.getElementById('top-champion-container')) {
         container.appendChild(resultItem);
     }
 
-    // --- 描画処理の実行 ---
-    const topContainer = document.getElementById('top-champion-container');
+ const topContainer = document.getElementById('top-champion-container');
     const otherContainer = document.getElementById('other-champions-container');
 
     if (top3Champions.length > 0) {
+        // result.htmlのh1がメインタイトルなので、JSで生成する1位のタイトルはh2に変更
         renderChampion(top3Champions[0], topContainer, true);
     }
     if (top3Champions.length > 1) {
-         // 2位と3位のタイトルを追加
-        const otherTitle = document.createElement('h3');
+        const otherTitle = document.createElement('h2'); // h3からh2に変更
+        otherTitle.className = 'other-champions-title'; // CSSでスタイルを当てるためのクラス
         otherTitle.textContent = 'こんなチャンピオンもおすすめ！';
         otherContainer.before(otherTitle); // otherContainerの前に追加
+
         renderChampion(top3Champions[1], otherContainer, false);
     }
     if (top3Champions.length > 2) {
         renderChampion(top3Champions[2], otherContainer, false);
     }
 
-    // --- シェアボタンのロジック ---
     const shareButton = document.getElementById('share-button');
     if (shareButton && top3Champions.length > 0) {
         shareButton.onclick = () => {
             const topChampionName = top3Champions[0].championNameJP;
-            const text = `LoLチャンピオン診断の結果、私にピッタリなのは【${topChampionName}】でした！\nあなたも診断してみよう！\n\n`;
-            const url = window.location.origin; // VercelのURLを取得
-            const hashtags = "LoLチャンピオン診断,LeagueOfLegends";
+            const text = `LoLチャンピオン診断の結果、私にピッタリなのは【${topChampionName}】でした！\n`;
+            const url = window.location.origin;
+            const hashtags = "LoLチャンピオン診断,LeagueofLegends,LoL";
             
             const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`;
             
